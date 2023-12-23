@@ -1,0 +1,210 @@
+# Shadowrocket: 2023-12-07 22:15:36
+[General]
+private-ip-answer = true
+prefer-ipv6 = false
+bypass-system = true
+fallback-dns-server = 223.5.5.5,119.29.29.29,114.114.114.114,2402:4e00::,2400:3200::1,180.76.76.76,180.184.1.1,8.8.8.8
+loglevel = notify
+show-error-page-for-reject = true
+allow-wifi-access = false
+all-hybrid = true
+ipv6 = true
+test-timeout = 5
+internet-test-url = http://www.aliyun.com
+proxy-test-url = http://www.gstatic.com/generate_204
+geoip-maxmind-url = https://github.com/Hackl0us/GeoIP2-CN/raw/release/Country.mmdb
+exclude-simple-hostnames = true
+dns-server = https://dns.alidns.com/dns-query,https://doh.pub/dns-query,https://dns.twnic.tw/dns-query,https://dns.google/dns-query,https://1dot1dot1dot1.cloudflare-dns.com/,2001:4860:4860::8888,https://dns64.dns.google/dns-query,2606:4700:4700::1111,208.67.220.222,2620:119:53::53,https://doh.opendns.com/dns-query,4.2.2.1,2606:4700:4700::1001
+hijack-dns = 8.8.8.8:53, 8.8.4.4:53
+read-etc-hosts = true
+http-api-web-dashboard = false
+use-default-policy-if-wifi-not-primary = false
+skip-proxy = 127.0.0.1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,100.64.0.0/10,17.0.0.0/8,localhost,*.local,*.crashlytics.com
+# TUN旁路路由。Shadowrocket TUN接口只能处理TCP协议。使用此选项可以绕过指定的IP范围，让其他协议通过。
+tun-excluded-routes = 10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/12, 192.0.0.0/24, 192.0.2.0/24, 192.88.99.0/24, 192.168.0.0/16, 198.51.100.0/24, 203.0.113.0/24, 224.0.0.0/4, 255.255.255.255/32, 239.255.255.250/32
+always-real-ip = *.srv.nintendo.net, *.stun.playstation.net, xbox.*.microsoft.com, *.xboxlive.com*.srv.nintendo.net, *.stun.playstation.net, xbox.*.microsoft.com, *.xboxlive.com, *.battlenet.com.cn, *.battlenet.com, *.blzstatic.cn, *.battle.net
+hide-vpn-icon = true
+wifi-assist = false
+update-url = /main/shadowrocket.conf
+[Proxy Group]
+# 该配置策略组可实现特定规则走指定策略或节点；如想让netflix走新加坡节点 那么可以在相应代理分组里勾选新加坡节点；
+# 更改代理分组策略的步骤(以🎥 Netflix策略为例)：点击界面底部配置--点击配置文件"ⓘ"符号---代理分组---点击🎥 Netflix策略的"ⓘ"符号---勾选🇸🇬 新加坡节点--保存。(新版小火箭只需首页下拉即可调出代理分组界面）
+# ♻️ ALL策略表示对所有节点进行测速并选择延迟最低的节点；测速间隔600秒，容差100ms；
+# 若不想用某些特定节点 可以通过正则排除 例：♻️ ALL = url-test,url=http://www.gstatic.com/generate_204,interval=600,tolerance=100,timeout=5,policy-regex-filter=^(?!.*?(国内|限速|试用)).*$
+# 也可以让指定机场参与测速 比如你的订阅连接的备注名是 YBNET 就套用以下示例：（新版已支持订阅选择）
+# 🚀 策略选择 = select,✈️ 机场选择,🇨🇳 台湾节点,🇬🇧 英国节点,🇯🇵 日本节点,🇭🇰 香港节点,🇸🇬 新加坡节点,🇺🇸 美国节点,🇰🇷 韩国节点,🇷🇺 俄罗斯节点,🇮🇳 印度,🇩🇪 德国,🇨🇦 加拿大,interval=86400,timeout=5,select=0,url=http://www.gstatic.com/generate_204
+# ✈️ 机场选择 = url-test,YBNET,interval=600,tolerance=0,timeout=3,select=0,url=http://www.gstatic.com/generate_204
+🚀 策略选择 = select,♻️ ALL,🇨🇳 台湾节点,🇬🇧 英国节点,🇯🇵 日本节点,🇭🇰 香港节点,🇸🇬 新加坡节点,🇺🇸 美国节点,🇰🇷 韩国节点,🇷🇺 俄罗斯节点,🇮🇳 印度,🇩🇪 德国,🇨🇦 加拿大,interval=600,timeout=5,select=0,url=http://www.gstatic.com/generate_204
+♻️ ALL = url-test,url=http://www.gstatic.com/generate_204,interval=600,tolerance=100,timeout=5,policy-regex-filter=.*
+🤖️ 人工智能 = select,🇺🇸 美国节点,🇬🇧 英国节点,🇩🇪 德国,🇨🇦 加拿大, select=0
+📲 Telegram = select,🚀 策略选择,🇭🇰 香港节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇯🇵 日本节点,🇨🇳 台湾节点,🇬🇧 英国节点,🇰🇷 韩国节点, select=0
+📹 YouTube = select,🚀 策略选择,🇭🇰 香港节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇯🇵 日本节点,🇨🇳 台湾节点,🇬🇧 英国节点, 🇰🇷 韩国节点,select=0
+🎥 Netflix = select,🚀 策略选择,🇭🇰 香港节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇯🇵 日本节点,🇨🇳 台湾节点,🇬🇧 英国节点,🇰🇷 韩国节点,select=0
+🎬 Disney+ = select,🚀 策略选择,🇭🇰 香港节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇯🇵 日本节点,🇨🇳 台湾节点,🇬🇧 英国节点,🇰🇷 韩国节点, select=0
+🎻 Spotify = select,🚀 策略选择,🇭🇰 香港节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇯🇵 日本节点,🇨🇳 台湾节点,🇬🇧 英国节点,🇰🇷 韩国节点, select=0
+📄 Twitter = select,🚀 策略选择,🇭🇰 香港节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇯🇵 日本节点,🇨🇳 台湾节点,🇬🇧 英国节点,🇰🇷 韩国节点, select=0
+🪙 Paypal = select,🚀 策略选择,🇭🇰 香港节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇯🇵 日本节点,🇨🇳 台湾节点,🇬🇧 英国节点,🇰🇷 韩国节点, select=0
+👤 Facebook = select,🚀 策略选择,🇭🇰 香港节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇯🇵 日本节点,🇨🇳 台湾节点,🇬🇧 英国节点,🇰🇷 韩国节点, select=0
+📖 Reddit = select,🚀 策略选择,🇭🇰 香港节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇯🇵 日本节点,🇨🇳 台湾节点,🇬🇧 英国节点,🇰🇷 韩国节点, select=0
+🐦 Discord = select,🚀 策略选择,🇭🇰 香港节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇯🇵 日本节点,🇨🇳 台湾节点,🇬🇧 英国节点,🇰🇷 韩国节点, select=0
+📽 哔哩哔哩 = select, 🌐 全球直连, 🇭🇰 香港节点, 🇨🇳 台湾节点, select=0
+🍿 国外媒体 = select,🚀 策略选择,🇭🇰 香港节点,🇺🇸 美国节点,🇸🇬 新加坡节点,🇯🇵 日本节点,🇨🇳 台湾节点,🇬🇧 英国节点,🇰🇷 韩国节点, select=0
+🍔 国内媒体 = select, 🌐 全球直连, 🇭🇰 香港节点, 🇺🇸 美国节点, 🇸🇬 新加坡节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, 🇬🇧 英国节点, select=0
+🍟 新浪微博 = select, 🌐 全球直连, 🚀 策略选择, 🇭🇰 香港节点, 🇺🇸 美国节点, 🇸🇬 新加坡节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, 🇬🇧 英国节点,🇰🇷 韩国节点, select=0
+Ⓜ️ 微软服务 = select, 🌐 全球直连, 🚀 策略选择, 🇭🇰 香港节点, 🇺🇸 美国节点, 🇸🇬 新加坡节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, 🇬🇧 英国节点,🇰🇷 韩国节点, select=0
+🍎 苹果服务 = select, 🌐 全球直连, 🚀 策略选择, 🇭🇰 香港节点, 🇺🇸 美国节点, 🇸🇬 新加坡节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, 🇬🇧 英国节点,🇰🇷 韩国节点, select=0
+🎮 游戏平台 = select, 🌐 全球直连, 🚀 策略选择, 🇭🇰 香港节点, 🇺🇸 美国节点, 🇸🇬 新加坡节点, 🇯🇵 日本节点, 🇨🇳 台湾节点, 🇬🇧 英国节点,🇰🇷 韩国节点, select=0
+# 以下国家地区节点筛选 请自行根据机场节点名称修改正则
+🇭🇰 香港节点 = url-test,url=http://www.gstatic.com/generate_204,interval=600,tolerance=100,timeout=5,policy-regex-filter=(?=.*(港|HK|(?i)Hong))^((?!(台湾|日本|新加坡|美国|韩国|狮城|南朝鲜|US|SG|JP|KR|TW|台灣|美國|韓國|獅城)).)*$
+🇨🇳 台湾节点 = url-test,url=http://www.gstatic.com/generate_204,interval=600,tolerance=100,timeout=5,policy-regex-filter=(?=.*(台|TW|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$
+🇺🇸 美国节点 = url-test,url=http://www.gstatic.com/generate_204,interval=600,tolerance=100,timeout=5,policy-regex-filter=(?=.*(美国|美國|US|洛杉矶|西雅图|(?i)States|American))^((?!(香港|台湾|日本|新加坡|韩国|狮城|南朝鲜|SG|JP|KR|HK|TW|台灣|韓國|獅城)).)*$
+🇰🇷 韩国节点 = url-test,url=http://www.gstatic.com/generate_204,interval=600,tolerance=100,timeout=5,policy-regex-filter=(?=.*(KR|Korea|KOR|首尔|韩|韓|(?i)Korea))^((?!(香港|台湾|新加坡|美国|狮城|南朝鲜|US|SG|HK|TW|台灣|美國|獅城)).)*$
+🇷🇺 俄罗斯节点 = url-test,url=http://www.gstatic.com/generate_204,interval=600,tolerance=100,timeout=5,policy-regex-filter=🇷🇺|俄罗斯|RU|莫斯科|圣彼得堡|喀山|哈尔科夫|乌法|新西伯利亚|下诺夫哥罗德|沃罗涅什
+🇬🇧 英国节点 = url-test,url=http://www.gstatic.com/generate_204,interval=600,tolerance=100,timeout=5,policy-regex-filter=🇬🇧|英国|UK|伦敦|英格兰|伯明翰|泰恩河畔纽卡斯尔|利兹|爱丁堡|格拉斯哥|苏格兰
+🇯🇵 日本节点 = url-test,url=http://www.gstatic.com/generate_204,interval=600,tolerance=100,timeout=5,policy-regex-filter=(?=.*(日本|JP|(?i)Japan))^((?!(香港|台湾|新加坡|美国|韩国|狮城|南朝鲜|US|SG|KR|HK|TW|台灣|美國|韓國|獅城)).)*$
+🇸🇬 新加坡节点 = url-test,url=http://www.gstatic.com/generate_204,interval=600,tolerance=100,timeout=5,policy-regex-filter=(?=.*(新加坡|狮城|SG|(?i)Singapore))^((?!(香港|台湾|日本|美国|韩国|南朝鲜|US|JP|KR|HK|TW|台灣|美國|韓國)).)*$
+🇮🇳 印度 = url-test,url=http://www.gstatic.com/generate_204,interval=600,tolerance=100,timeout=5,policy-regex-filter=🇮🇳|印度|IN|IND|孟买|新德里|高知|Republic of India|India
+🇩🇪 德国 = url-test,url=http://www.gstatic.com/generate_204,interval=600,tolerance=100,timeout=5,policy-regex-filter=🇩🇪|德国|DEU|DE|柏林|慕尼黑|汉堡|科隆|Germany
+🇨🇦 加拿大 = url-test,url=http://www.gstatic.com/generate_204,interval=600,tolerance=100,timeout=5,policy-regex-filter=🇨🇦|加拿大|CA|渥太华
+🌐 全球直连 = select, DIRECT
+[Rule]
+RULE-SET,https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/AntiAD.list,REJECT
+RULE-SET, https://raw.githubusercontent.com/gotuntun/ccccc/main/zl.list, 🌐全球直连
+https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/ChatGPT.list,🤖️ 人工智能
+RULE-SET,https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/ai.list, 🤖️ AI
+RULE-SET, https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/Microsoft.list,Ⓜ️ 微软服务
+RULE-SET,https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/Apple.list,🍎 苹果服务
+RULE-SET, https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/AppStore.list,🍎 苹果服务
+RULE-SET,https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/Telegram.list,📲 电报
+RULE-SET,https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/Spotify.list,🎻 SPOTIFY
+RULE-SET, https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/PayPal.list,🪙 PAYPAL
+RULE-SET,https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/Facebook.list,👤 FACEBOOK
+RULE-SET,https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/Reddit.list,📖 REDDIT
+RULE-SET, https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/Disney.list, 🎬迪士尼
+RULE-SET,https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/YouTube.list,📹 YOUTUBE
+RULE-SET,https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/GitHub.list,📹 GitHub
+RULE-SET,https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/Netflix.list,🎥 NETFLIX
+RULE-SET, https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/Cloudflare.list,😁国外域名商
+RULE-SET,https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/ChinaMedia.list,🍿 国外媒体
+RULE-SET, https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/Twitter.list, 📄 X推特
+RULE-SET,https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/Google.list,🚀 策略选择
+RULE-SET,https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/Proxy.list,🚀 策略选择
+RULE-SET,https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/AppleProxy/AppleProxy.list,🚀 策略选择
+DOMAIN-SET,https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/ProxyMedia.list,🚀 策略选择
+RULE-SET, https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/TikTok.list,🧍‍♀️ 抖音
+RULE-SET,https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/Weibo.list,🍟 新浪微博
+RULE-SET,https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/WeChat.list,🫂WECHAT
+RULE-SET,https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/BiliBili.list,📽 哔哩哔哩
+RULE-SET, https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/ChinaMedia.list,🍔 国内媒体
+RULE-SET,https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/IPs-CN.list,🌐 全球直连
+RULE-SET,https://raw.githubusercontent.com/deezertidal/shadowrocket-rules/main/rule/ASN-CN.list,🌐 全球直连
+FINAL,🚀 策略选择
+CN, 🌐全球直连
+[Host]
+camo.githubusercontent.com = 185.199.108.133
+assets-cdn.github.com = 185.199.111.153
+desktop.githubusercontent.com = 185.199.109.133
+central.github.com = 140.82.112.21
+github.githubassets.com = 185.199.108.154
+[URL Rewrite]
+^https:\/\/www\.google\.com\/search\?q=bd\+([^&]+) https://m.baidu.com/s?word=$1 302
+^https?:\/\/api\.m\.jd.com\/client\.action\?functionId=start reject-200 
+^http:\/\/bd-api\.kuwo\.cn\/api\/service\/resource\/musicResource\/.+ _ reject
+^https:\/\/bodiancdn\.kuwo\.cn\/.+\.mp4 _ reject
+^http:\/\/bd-api\.kuwo\.cn\/api\/service\/resource\/view\?uid _ reject
+^http:\/\/bd-api\.kuwo\.cn\/api\/service\/music\/recommendList\?uid _ reject
+^https?:\/\/app\.bilibili\.com\/x\/resource\/ip - reject
+^https?:\/\/app\.bilibili\.com\/bilibili\.app\.interface\.v1\.Search\/Default - reject
+^https?:\/\/app\.bilibili\.com\/x\/resource\/top\/activity - reject-dict
+^https://app.bilibili.com/x/v2/splash/show - reject-dict
+^https://app.bilibili.com/x/v2/search/defaultwords - reject-dict
+^https?:\/\/api\.bilibili\.com\/x\/vip\/ads\/material\/report - reject-dict
+^https://api.bilibili.com/pgc/season/player/cards - reject-dict
+^https?:\/\/api\.vc\.bilibili\.com\/search_svr\/v\d\/Search\/recommend_words - reject
+^https?:\/\/api\.vc\.bilibili\.com\/topic_svr\/v1\/topic_svr - reject-dict
+^https?:\/\/api\.bilibili\.com\/pgc\/season\/app\/related\/recommend\? - reject-dict
+^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/(Flash|ListFlash) - reject-dict
+^https?:\/\/.*\.xima.*\.com\/mobile-playpage\/view\/ - reject
+^https?:\/\/.*\.xima.*\.com\/chaos-notice-web\/v1\/message\/preview\/list - reject
+^https?:\/\/.*\.xima.*\.com\/social-web\/bottomTabs\/dynamicEntrance\/status - reject
+^https?:\/\/.*\.xmcdn\.com\/\w{8}\/\w{4}-\w{16}\/.+gif$ - reject
+^https?:\/\/.*\.xima.*\.com\/(dog-portal\/checkOld|(child-mobile\/child|aged-mobile\/aged)\/mode\/query) - reject
+^https?:\/\/.*\.xima.*\.com\/discovery-feed\/isShowUserGiftPendant - reject
+^https?:\/\/.*\.xima.*\.com\/mobile-user\/unread - reject
+^https?:\/\/.*\.xima.*\.com/mobile-user/minorProtection/pop - reject
+^https?:\/\/.*\.xima.*\.com\/collector\/xl\/v\d - reject
+^https?:\/\/.*\.xima.*\.com\/butler-portal\/versionCheck - reject
+^https?:\/\/(adse\.wsa|adse|adbehavior|xdcs-collector)\.xima.*\.com\/.* - reject
+^https?:\/\/.*\.xima.*\.com\/mobile\/discovery\/v\d\/location - reject
+^https?:\/\/.*\.xima.*\.com\/hotWord - reject
+^https?:\/\/.*\.xima.*\.com\/guideWord - reject
+^https?:\/\/.*\.xima.*\.com\/api\/v\d\/adRealTime - reject
+^https?:\/\/.*\.xima.*\.com\/ting\/(loading|feed|home)? - reject
+^https?:\/\/(www.)?(g|google)\.cn https://www.google.com 302
+^https?:\/\/(ditu|maps).google\.cn https://maps.google.com 302
+^https?:\/\/(www.)?taobao\.com\/ https://taobao.com/ 302
+^https?:\/\/(www.)?jd\.com\/ https://www.jd.com/ 302
+^https?:\/\/(www.)?mi\.com\/ https://www.mi.com/ 302
+^https?:\/\/you\.163\.com\/ https://you.163.com/ 302
+^https?:\/\/(www.)?suning\.com\/ https://suning.com/ 302
+^https?:\/\/(www.)?yhd\.com\/ https://yhd.com/ 302
+^https?:\/\/(www.)?ign\.xn--fiqs8s\/ http://cn.ign.com/ccpref/us 302
+^https?:\/\/(www.)?abbyychina\.com\/ https://www.abbyy.cn/ 302
+^https?:\/\/(www.)?bartender\.cc\/ https://www.macbartender.com/ 302
+^https?:\/\/(www.)?(betterzipcn|betterzip)\.(com|net)\/ https://macitbetter.com/ 302
+^https?:\/\/(www.)?beyondcompare\.cc\/ https://www.scootersoftware.com/ 302
+^https?:\/\/(www.)?bingdianhuanyuan\.cn\/ https://www.faronics.com/zh-hans/products/deep-freeze 302
+^https?:\/\/(www.)?chemdraw\.com\.cn\/ https://www.perkinelmer.com.cn/ 302
+^https?:\/\/(www.)?codesoftchina\.com\/ https://www.teklynx.com/ 302
+^https?:\/\/(www.)?coreldrawchina\.com\/ https://www.coreldraw.com/cn/ 302
+^https?:\/\/(www.)?crossoverchina\.com\/ https://www.codeweavers.com/ 302
+^https?:\/\/(www.)?dongmansoft\.com\/ https://www.udongman.cn/ 302
+^https?:\/\/(www.)?earmasterchina\.cn\/ https://www.earmaster.com/ 302
+^https?:\/\/(www.)?easyrecoverychina\.com\/ https://www.ontrack.com/ 302
+^https?:\/\/(www.)?ediuschina\.com\/ https://www.grassvalley.com/ 302
+^https?:\/\/(www.)?flstudiochina\.com\/ https://www.image-line.com/ 302
+^https?:\/\/(www.)?formysql\.com\/ https://www.navicat.com.cn/ 302
+^https?:\/\/(www.)?guitarpro\.cc\/ https://www.guitar-pro.com/ 302
+^https?:\/\/(www.)?huishenghuiying\.com\.cn\/ https://www.coreldraw.com/cn/ 302
+^https?:\/\/hypersnap\.mairuan\.com\/ https://www.hyperionics.com/ 302
+^https?:\/\/(www.)?iconworkshop\.cn\/ https://www.axialis.com/ 302
+^https?:\/\/(www.)?idmchina\.net\/ https://www.internetdownloadmanager.com/ 302
+^https?:\/\/(www.)?imindmap\.cc\/ https://www.ayoa.com/previously-imindmap/ 302
+^https?:\/\/(www.)?jihehuaban\.com\.cn\/ https://www.chartwellyorke.com/sketchpad/x24795.html 302
+^https?:\/\/hypersnap\.mairuan\.com\/ https://www.keyshot.com/ 302
+^https?:\/\/(www.)?kingdeecn\.cn\/ http://www.kingdee.com/ 302
+^https?:\/\/(www.)?logoshejishi\.com https://www.sothink.com/product/logo-design-software/ 302
+^https?:\/\/logoshejishi\.mairuan\.com\/ https://www.sothink.com/product/logo-design-software/ 302
+^https?:\/\/(www.)?luping\.net\.cn\/ https://www.techsmith.com/ 302
+^https?:\/\/(www.)?mathtype\.cn\/ https://www.dessci.com/ 302
+^https?:\/\/(www.)?mindmanager\.(cc|cn)\/ https://www.mindjet.com/cn/ 302
+^https?:\/\/(www.)?mindmapper\.cc\/ https://www.mindmapper.com/ 302
+^https?:\/\/(www.)?(mycleanmymac|xitongqingli)\.com\/ https://macpaw.com/ 302
+^https?:\/\/(www.)?nicelabel\.cc\/ https://www.nicelabel.com/zh/ 302
+^https?:\/\/(www.)?ntfsformac\.cc\/ https://www.tuxera.com/products/tuxera-ntfs-for-mac-cn/ 302
+^https?:\/\/(www.)?ntfsformac\.cn\/ https://china.paragon-software.com/home-mac/ntfs-for-mac/ 302
+^https?:\/\/(www.)?overturechina\.com\/ https://sonicscores.com/ 302
+^https?:\/\/(www.)?passwordrecovery\.cn\/ https://cn.elcomsoft.com/aopr.html 302
+^https?:\/\/(www.)?pdfexpert\.cc\/ https://pdfexpert.com/zh 302
+^https?:\/\/(www.)?photozoomchina\.com\/ https://www.benvista.com/ 302
+^https?:\/\/(www.)?shankejingling\.com\/ https://www.sothink.com/product/flashdecompiler/ 302
+^https?:\/\/cn\.ultraiso\.net\/ https://cn.ezbsystems.com/ultraiso/ 302
+^https?:\/\/(www.)?vegaschina\.cn\/ https://www.vegascreativesoftware.com/ 302
+^https?:\/\/(www.)?xshellcn\.com\/ https://www.netsarang.com/zh/xshell/ 302
+^https?:\/\/(www.)?yuanchengxiezuo\.com\/ https://www.teamviewer.com/ 302
+^https?:\/\/(www.)?zbrushcn.com/ https://pixologic.com/ 302
+^https?:\/\/api\.abema\.io\/v\d\/ip\/check - reject
+(^https?:\/\/app\.biliintl\.com\/intl\/.+)(&sim_code=\d+)(.+) $1$3 302
+^http:\/\/(www.)?aicoin\.cn\/$ https://www.aicoin.cn/?long_lives_aicoin=%22live%22 302
+
+[Script]
+顺丰速运 = type=cron,cronexp=0 3 8 * * *,wake-system=1,timeout=120,script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/sfexpress/sfexpress.js
+京东快递签到 = type=cron,cronexp=10 0 * * *,wake-system=1,timeout=120,script-path=https://raw.githubusercontent.com/ChuheGit/1/main/Script/jd_scripts/jd_kd.js
+微信链接快捷跳转 = type=http-response,pattern=^https?:\/\/weixin110\.qq\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi,script-path=https://raw.githubusercontent.com/HotKids/Rules/master/Script/weixin110.js,requires-body=1
+微信公众号去广告 = type=http-response,pattern=^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad ,requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js
+百度云加速 = type=http-response,pattern=https:\/\/pan\.baidu\.com\/rest\/2\.0\/membership\/user ,requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/BaiduCloud.js
+[MITM]
+ca-passphrase = Shadowrocket
+ca-p12 = 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
+enable = true
+hostname = api.revenuecat.com,buy.itunes.apple.com,api.tidal.com,xluser-ssl.xunlei.com,api.changecollective.com,scibug.com,spclient.wg.spotify.com,api-mobile.soundcloud.com,pro.smallpdf.com,hostname = api.shouzhang.com,hostname = ios.prod.ftl.netflix.com,api.risingfalling.com,api.m.jd.com, trade-acs.m.taobao.com,*.snssdk.com,api.polaxiong.com,oauth.secure.pixiv.net,api.picsart.c*, api.meiease.c*,piccollage.com,lapi.photomath.net,nz-api.duitang.com,nowapi.navoinfo.cn,nomo.dafork.com,restore-access.indream.app,www.livestrong.com,premium-api.myfitnesspal.com,apic.musixmatch.com,pay.wecut.com,bmall.camera360.com,api.xiuxiu.meitu.com, h5.xiuxiu.meitu.com,www.mindmeister.com,app.lalaldc.cn,vira.llsapp.com,*.kuwo.cn, *.lrts.me,api.kikakeyboard.com,judouapp.com,origin-prod-phoenix.jibjab.com,payments.invideo.io,icity-imsm.2q10.com,service.ilovepdf.com,zy6kcqa01a.execute-api.us-east-2.amazonaws.com,apiios_dq.xiangha.com,subscription.grammarly.com,*.cloudfunctions.net,user.ftmailbox.cn,server.yoyiapp.com,api.flexibits.com,106.54.2.168,mb3admin.com,bookapi.ellabook.cn,gateway.ergedd.com,xrckeji.com,pre.dailyyoga.com,biz.caiyunapp.com,claritywallpaper.com,ap*.intsig.net,www.40sishi.com,gateway.caixin.com，m.baidu.com,www.google.com,apimboom2.globaldelight.net,app.bilibili.com,api.live.bilibili.com,api.vc.bilibili.com, api.bilibili.com, manga.bilibili.com, grpc.biliapi.net,api.biliapi.net, -broadcast.chat.bilibili.com, -*cdn*.biliapi.net, -*tracker*.biliapi.net,screen-lock.51wnl-cq.com,pan.baidu.com,user-kaji-api.b612kaji.com,appraven.net,*.aoscdn.com,api.alohaprofile.com,ars.alar.my,app-subscription-proxy.accuweather.com,apigate.zymk.cn,integral.dasyibalang.com,zebra.maka.im,getway.radio.cn,app.yiyan.art,m2u-api.getkwai.com,i.xinyulib.com.cn,xianbeikeji.com,*.xima*.*, *.xmcdn.*,www.xmind.cn, www.xmind.net,ios.fuliapps.com, apple.fuliapps.com, ios.xiangjiaoapps.com, apple.xiangjiaoapps.com, *.xiangxiangapps.com, *.pipiapps.com,xy-viva.kakalili.com, api-chn.rthdo.com,lchttpapi.xczim.com,account.wps.cn,*account.wps.com,*.40sishi.com,hostname = buy.itunes.apple.com,api.weibo.cn, mapi.weibo.com, *.uve.weibo.com, new.vip.weibo.cn,mp.weixin.qq.com,*.wallpaperscraft.com,www.google.cn,api.abema.io,app.biliintl.com,me-api.jd.com, draw.jdfcloud.com, jdjoy.jd.com, account.huami.com,mapi.weibo.com,*.uve.weibo.com,trade-acs.m.taobao.com,ios.prod.ftl.netflix.com,api.21jingji.com,service.4gtv.tv,app.58.com,pic?.ajkimg.com,gw.alicdn.com,heic.alicdn.com,acs.m.taobao.com,m*.amap.com,api-new.app.acfun.cn,api.bjxkhc.com,*.amemv.com,issuecdn.baidupcs.com,newclient.map.baidu.com,mime.baidu.com,act.vip.iqiyi.com,manga.bilibili.com,channel.beitaichufang.com,iapi.bishijie.com,app.api.ke.com,www.bodivis.com.cn,yxyapi*.drcuiyutao.com,clientaccess.10086.cn,m.client.10010.com,cloud.189.cn,api.chelaile.net.cn,web.chelaile.net.cn,cap.caocaokeji.cn,api.caijingmobile.com,gw.csdn.net,m.ctrip.com,app.poizon.com,api.douban.com,rtbapi.douyucdn.cn,e.dangdang.com,daoyu.sdo.com,*.daydaycook.com,maicai.api.ddxq.mobi,mobile-api2011.elong.com,123.59.31.1,119.18.193.135,cube.elemecdn.com,i.ys7.com,www.flyertea.com,dsa-mfp.fengshows.cn,api.feng.com,*-release.wuta-cam.com,www.youtube.com,s.youtube.com,gateway.shouqiev.com,dl.app.gtja.com,prom.mobile.gome.com.cn,smkmp.96225.com,api.huomao.com,imeclient.openspeech.cn,api.intsig.net,ih2.ireader.com,nnapp.cloudbae.cn:0,ib-soft.net,www.inoreader.com,ms.jr.jd.com,img*.360buyimg.com,api.jxedt.com,richmanapi.jxedt.com,*.kakamobi.cn,app-api.jinse.com,ios.wps.cn,*.kingsoft-office-service.com,api.gotokeep.com,api.kkmh.com,122.14.246.33,175.102.178.52,api.club.lenovo.cn,api.jr.mi.com,api-mifit*.huami.com,api.mgzf.com,cdn.moji.com,img.meituan.net,p*.meituan.net,s3plus.meituan.net,flowplus.meituan.net,capi.mwee.cn,mapi.mafengwo.cn,app.mixcapp.com,appconf.mail.163.com,c.m.163.com,client.mail.163.com,interface*.music.163.com,59.111.181.*,sp.kaola.com,support.you.163.com,p.du.163.com,app-api.niu.com,slapi.oray.net,pss.txffp.com,api.yangkeduo.com,api.pinduoduo.com,mrobot.pconline.com.cn,mrobot.pcauto.com.cn,open.qyer.com,media.qyer.com,api.qbb6.com,mage.if.qidian.com,msspjh.emarbox.com,api.rr.tv,weibointl.api.weibo.cn,tqt.weibo.cn,*.k.sohu.com,*.tv.sohu.com,ap*.smzdm.com,gw-passenger.01zhuanche.com,mpcs.suning.com,ccsp-egmas.sf-express.com,consumer.fcbox.com,g.cdn.pengpengla.com,snailsleep.net,api*.futunn.com,ssl.kohsocialapp.qq.com,4gimg.map.qq.com,r.inews.qq.com,news.ssp.qq.com,m.tuniu.com,mob.mddcloud.com,img*.10101111cdn.com,api.vuevideo.net,app.variflight.com,api.cdmcaac.com,api.vistopia.com.cn,app.wy.guahao.com,thor.weidian.com,api.wallstcn.com,api.xiachufang.com,api.psy-1.com,portal-xunyou.qingcdn.com,api.xueqiu.com,promo.xueqiu.com,182.92.251.113,101.201.175.228,www.xiaohongshu.com,app.yinxiang.com,restapi.iyunmai.com,api.zhihu.com,a.qiumibao.com,*.zhuishushenqi.com,www.zybang.com,api.izuiyou.com,tiku.zhan.com,webboot.zhangyue.com,saad.ms.zhangyue.net,vip1.kuwo.cn,*.googlevideo.com,appcloud2.zhihu.com,www.zhihu.com,zhuanlan.zhihu.com,ndstatic.cdn.bcebos.com,staticsns.cdn.bcebos.com,dss0.bdstatic.com,sofire.baidu.com,weixin110.qq.com,m.baidu.com,api.bilibili.com,api.diyidan.net,book.haitunwallet.com,app.api.versa-ai.com,billing.peakcloud.org,pocketlists.com,p.du.163.com,note.youdao.com
