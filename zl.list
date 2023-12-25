@@ -36,6 +36,9 @@ DOMAIN-SUFFIX,vip.imgffzy.com,DIRECT
 DOMAIN-SUFFIX,pic1.zykpic.com,DIRECT
 DOMAIN-SUFFIX,fpinit.itunes.apple.com,DIRECT
 DOMAIN-SUFFIX,p120-fmfmobile.icloud.com,DIRECT
+IP-CIDR,240e:bf:c800:1f00:3::3c5/32,DIRECT
+IP-CIDR,240e:bf:c800:1b00:3::112/32,DIRECT
+DOMAIN-SUFFIX,gw.alipayobjects.com,DIRECT
 DOMAIN-SUFFIX,ukzy.ukubf8.com,DIRECT
 DOMAIN-SUFFIX,ukzy.ukubf8.com,DIRECT
 DOMAIN-SUFFIX,ukzy.ukubf8.com,DIRECT
